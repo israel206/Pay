@@ -1,4 +1,4 @@
-defmodule Pay.DataCase do
+defmodule Rocketpay.DataCase do
   @moduledoc """
   This module defines the setup for tests requiring
   access to the application's data layer.
@@ -10,7 +10,7 @@ defmodule Pay.DataCase do
   we enable the SQL sandbox, so changes done to the database
   are reverted at the end of every test. If you are using
   PostgreSQL, you can even run database tests asynchronously
-  by setting `use Pay.DataCase, async: true`, although
+  by setting `use Rocketpay.DataCase, async: true`, although
   this option is not recommended for other databases.
   """
 
@@ -18,20 +18,20 @@ defmodule Pay.DataCase do
 
   using do
     quote do
-      alias Pay.Repo
+      alias Rocketpay.Repo
 
       import Ecto
       import Ecto.Changeset
       import Ecto.Query
-      import Pay.DataCase
+      import Rocketpay.DataCase
     end
   end
 
   setup tags do
-    :ok = Ecto.Adapters.SQL.Sandbox.checkout(Pay.Repo)
+    :ok = Ecto.Adapters.SQL.Sandbox.checkout(Rocketpay.Repo)
 
     unless tags[:async] do
-      Ecto.Adapters.SQL.Sandbox.mode(Pay.Repo, {:shared, self()})
+      Ecto.Adapters.SQL.Sandbox.mode(Rocketpay.Repo, {:shared, self()})
     end
 
     :ok

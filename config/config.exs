@@ -7,16 +7,24 @@
 # General application configuration
 use Mix.Config
 
-config :pay,
-  ecto_repos: [Pay.Repo]
+config :rocketpay,
+  ecto_repos: [Rocketpay.Repo]
 
 # Configures the endpoint
-config :pay, PayWeb.Endpoint,
+config :rocketpay, RocketpayWeb.Endpoint,
   url: [host: "localhost"],
-  secret_key_base: "j0XJAiMM00LAASN6GhpATRk5AzcWtB3MUAs7MbJlWjG3/22EU2yZThrOat/iCklt",
-  render_errors: [view: PayWeb.ErrorView, accepts: ~w(json), layout: false],
-  pubsub_server: Pay.PubSub,
-  live_view: [signing_salt: "KN0v2boz"]
+  secret_key_base: "DuD4um8Qfg21HfOGmvGidRGuOxzkO+bfZxJo9JiCMq7YlTCf9RKv2fOCYiyMDwPs",
+  render_errors: [view: RocketpayWeb.ErrorView, accepts: ~w(json), layout: false],
+  pubsub_server: Rocketpay.PubSub,
+  live_view: [signing_salt: "6QQ1AVTD"]
+
+config :rocketpay, Rocketpay.Repo,
+  migration_primary_key: [type: :binary_id],
+  migration_foreign_key: [type: :binary_id]
+
+config :rocketpay, :basic_auth,
+  username: "banana",
+  password: "nanica123"
 
 # Configures Elixir's Logger
 config :logger, :console,
